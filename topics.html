@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Topics - Cybersecurity Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+    }
+
+    header {
+      background: #0a3d62;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header nav a {
+      color: #f1f1f1;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    header nav a:hover {
+      color: #feca57;
+    }
+
+    h1 {
+      margin: 10px 0;
+    }
+
+    .topics-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .topic-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .topic-card h2 {
+      font-size: 1.3rem;
+      margin: 10px 0;
+      color: #0a3d62;
+    }
+
+    .topic-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .topic-card a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 14px;
+      background: #0a3d62;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .topic-card a:hover {
+      background: #feca57;
+      color: black;
+    }
+
+    footer {
+      background: #0a3d62;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cybersecurity Knowledge Hub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="topics.html">Topics</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="topics-container">
+      <div class="topic-card">
+        <h2>Phishing</h2>
+        <p>Learn how attackers trick users into revealing sensitive information.</p>
+        <a href="topics/phishing.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Malware</h2>
+        <p>Understand viruses, worms, trojans, spyware, and ransomware threats.</p>
+        <a href="topics/malware.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Cryptography</h2>
+        <p>The science of securing communication with encryption and hashing.</p>
+        <a href="topics/cryptography.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Network Security</h2>
+        <p>Defend against intrusions, sniffing, and unauthorized access.</p>
+        <a href="topics/network-security.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Incident Response</h2>
+        <p>Steps for detecting, analyzing, and recovering from cyber incidents.</p>
+        <a href="topics/incident-response.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Digital Forensics</h2>
+        <p>Investigating cybercrimes with evidence collection and analysis.</p>
+        <a href="topics/digital-forensics.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>IoT Security</h2>
+        <p>Securing smart devices and preventing IoT-related cyber threats.</p>
+        <a href="topics/iot-security.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>AI in Cybersecurity</h2>
+        <p>Using artificial intelligence for threat detection and defense.</p>
+        <a href="topics/ai-cybersecurity.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Cloud Security</h2>
+        <p>Protecting cloud infrastructure, data, and shared responsibility.</p>
+        <a href="topics/cloud-security.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Mobile Security</h2>
+        <p>Securing smartphones against malware, theft, and data leaks.</p>
+        <a href="topics/mobile-security.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Ransomware</h2>
+        <p>Understanding encryption-based extortion attacks on systems.</p>
+        <a href="topics/ransomware.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Social Engineering</h2>
+        <p>Exploiting human psychology to bypass security defenses.</p>
+        <a href="topics/social-engineering.html">Explore</a>
+      </div>
+      <div class="topic-card">
+        <h2>Cybersecurity Careers</h2>
+        <p>Explore paths like analyst, penetration tester, and SOC engineer.</p>
+        <a href="topics/career-paths.html">Explore</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Cybersecurity Hub</p>
+  </footer>
+</body>
+</html>

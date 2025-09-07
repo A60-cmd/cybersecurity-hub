@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f0f1a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* MATRIX RAIN CANVAS */
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: black;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      padding: 0 10%;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-left h1 {
+      font-size: 4rem;
+      background: linear-gradient(90deg, #00f2fe, #4facfe, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #00f2fe;
+      }
+      100% {
+        text-shadow: 0 0 25px #4facfe;
+      }
+    }
+
+    .hero-left p {
+      margin: 20px 0;
+      font-size: 1.3rem;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .hero-btns a {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 35px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(135deg, #00f2fe, #0072ff);
+      box-shadow: 0 0 25px #00f2fe;
+      transition: 0.3s;
+    }
+
+    .hero-btns a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 45px #00f2fe;
+    }
+
+    /* HERO RIGHT CYBER SHIELD */
+    .hero-right {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      animation: rotate 15s linear infinite;
+    }
+
+    .hero-right svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 25px #00f2fe);
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .shield-aura {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.2), transparent 70%);
+      filter: blur(25px);
+      animation: pulseAura 3s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes pulseAura {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    /* INFO CARDS */
+    .info-section {
+      padding: 80px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      perspective: 1000px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+      transition: 0.5s;
+      transform-style: preserve-3d;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      background: linear-gradient(90deg, #00f2fe, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    .info-card:hover {
+      transform: rotateY(10deg) translateY(-10px);
+      box-shadow: 0 0 35px #00f2fe;
+    }
+
+    .fade-in {
+      animation: fadeUp 1s forwards;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      background: #142850;
+      padding: 60px 10%;
+      text-align: center;
+      color: white;
+      margin-top: 50px;
+      z-index: 2;
+    }
+
+    /* NEON MATRIX CHARACTERS OVERLAY */
+    .matrix-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MATRIX CANVAS -->
+  <canvas id="matrix"></canvas>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Cybersecurity Hub</h1>
+      <p>Step into the future of digital defense. Learn cyber threats, explore deep topics, and challenge yourself with quizzes to become a real cyber defender.</p>
+      <div class="hero-btns">
+        <a href="topics.html">🔐 Learn Topics</a>
+        <a href="quiz.html">📝 Take a Quiz</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!-- Neon aura behind the shield -->
+      <div class="shield-aura"></div>
+
+      <!-- Animated cyber shield SVG -->
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="#00f2fe" stroke-width="2" fill="none"/>
+        <polygon id="shieldPoly" points="50,15 70,50 50,85 30,50" stroke="#00f2fe" stroke-width="2" fill="rgba(0,242,254,0.2)"/>
+        <polygon id="shieldInner" points="50,25 65,50 50,75 35,50" stroke="#4facfe" stroke-width="2" fill="rgba(79,172,254,0.2)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- INFO SECTION -->
+  <section class="info-section">
+    <div class="info-card fade-in" style="animation-delay:0.2s">
+      <h3>Learn</h3>
+      <p>Master ethical hacking, malware analysis, cryptography, and network security with in-depth guides.</p>
+    </div>
+    <div class="info-card fade-in" style="animation-delay:0.4s">
+      <h3>Explore</h3>
+      <p>Dive into real-world scenarios, cyber threats, and defense mechanisms to gain practical knowledge.</p>
+    </div>
+    <div class="info-card fade-in" style="animation-delay:0.6s">
+      <h3>Challenge</h3>
+      <p>Test your skills with advanced quizzes, track your progress, and climb the leaderboard.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Cybersecurity Hub | Next-gen Cyber Learning</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Info cards fade in on scroll
+    const cards = document.querySelectorAll('.info-card');
+    window.addEventListener('scroll', () => {
+      const triggerBottom = window.innerHeight * 0.9;
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < triggerBottom) {
+          card.classList.add('fade-in');
+        }
+      });
+    });
+
+    // MATRIX EFFECT
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) drops[x] = Math.random() * canvas.height;
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00ff00";
+      ctx.font = fontSize + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 35);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>
