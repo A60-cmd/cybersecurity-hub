@@ -1,4 +1,4 @@
-const quizzes = { 
+const quizzes = {
   easy: [
     { q: "What does HTTPS stand for?", options: ["Hyper Transfer Text Secure", "HyperText Transfer Protocol Secure", "High Tech Protocol Security"], answer: 1, explanation: "HTTPS = HyperText Transfer Protocol Secure. It uses SSL/TLS for encryption." },
     { q: "Which of the following is a strong password?", options: ["12345678", "Password123", "D$9g!kQ2*7"], answer: 2, explanation: "Strong passwords use randomness, length, and symbols." },
@@ -40,27 +40,9 @@ const quizzes = {
 let timer;
 let timeLeft = 300; // 5 min
 
-// ✅ Shuffle function
-function shuffleArray(arr) {
-  let array = [...arr];
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
 function loadQuiz(level) {
   const quizBox = document.getElementById("quiz-container");
-  let questions = quizzes[level];
-
-  // ✅ Shuffle questions and also shuffle options for randomness
-  questions = shuffleArray(questions).map(q => {
-    const shuffledOptions = shuffleArray(q.options);
-    const newAnswerIndex = shuffledOptions.indexOf(q.options[q.answer]);
-    return { ...q, options: shuffledOptions, answer: newAnswerIndex };
-  });
-
+  const questions = quizzes[level];
   timeLeft = 300;
   clearInterval(timer);
 
@@ -79,7 +61,7 @@ function loadQuiz(level) {
     html += `</div></div>`;
   });
 
-  html += `<button type="button" class="submit-btn" onclick="submitQuiz('${level}', ${JSON.stringify(questions)})">Submit</button></form>`;
+  html += `<button type="button" class="submit-btn" onclick="submitQuiz('${level}')">Submit</button></form>`;
   quizBox.innerHTML = html;
 
   startTimer(level);
@@ -100,15 +82,18 @@ function startTimer(level) {
 }
 
 function updateProgress(level) {
-  const form = document.getElementById("quiz-form");
-  const total = form.querySelectorAll(".question").length;
-  const answered = form.querySelectorAll("input[type='radio']:checked").length;
-  const progress = Math.round((answered / total) * 100);
+  const questions = quizzes[level];
+  let answered = 0;
+  questions.forEach((_, i) => {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  const progress = Math.round((answered / questions.length) * 100);
   document.getElementById("progress-bar").style.width = progress + "%";
 }
 
-function submitQuiz(level, questions) {
+function submitQuiz(level) {
   clearInterval(timer);
+  const questions = quizzes[level];
   let score = 0;
   let resultsHtml = `<h2>${level.toUpperCase()} Quiz Results</h2>`;
 
@@ -147,33 +132,3 @@ function displayLeaderboard() {
 }
 
 displayLeaderboard();
-
-// Shield animation
-const poly = document.getElementById('shieldPoly');
-const inner = document.getElementById('shieldInner');
-let angle = 0;
-function animateShield(){
-  angle += 0.02;
-  const rotatePoint = (x,y,cx,cy,ang)=>{
-    const rad = ang;
-    const nx = Math.cos(rad)*(x-cx) - Math.sin(rad)*(y-cy) + cx;
-    const ny = Math.sin(rad)*(x-cx) + Math.cos(rad)*(y-cy) + cy;
-    return [nx,ny];
-  }
-
-  const outerPoints = [[50,15],[70,50],[50,85],[30,50]];
-  const innerPoints = [[50,25],[65,50],[50,75],[35,50]];
-
-  poly.setAttribute('points', outerPoints.map(p=>rotatePoint(p[0],p[1],50,50,angle).join(',')).join(' '));
-  inner.setAttribute('points', innerPoints.map(p=>rotatePoint(p[0],p[1],50,50,-angle*1.5).join(',')).join(' '));
-
-  requestAnimationFrame(animateShield);
-}
-animateShield();
-
-const heroRight = document.querySelector('.hero-right');
-document.addEventListener('mousemove', e=>{
-  const x = (e.clientX - window.innerWidth/2)/50;
-  const y = (e.clientY - window.innerHeight/2)/50;
-  heroRight.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
-});
