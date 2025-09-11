@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing Awareness Simulator</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 0; background: #0f2027; color: #fff; }
+    header { padding: 20px; text-align: center; background: #203a43; font-size: 28px; color: #00e5ff; }
+    .back-btn { position: absolute; left: 20px; top: 20px; padding: 8px 15px; border: 2px solid #00e5ff; border-radius: 8px; background: transparent; color: #00e5ff; cursor: pointer; }
+    .container { padding: 30px; max-width: 800px; margin: auto; }
+    .email { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(0,229,255,0.2); }
+    button { margin-top: 15px; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; background: #00e5ff; color: #111; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    📧 Phishing Awareness Simulator
+    <button class="back-btn" onclick="location.href='../Tools.html'">← Back</button>
+  </header>
+
+  <div class="container">
+    <h2>About This Tool</h2>
+    <p>
+      Phishing is one of the most common cyberattacks, tricking users into clicking fake links or sharing personal info.
+      This simulator gives you practice spotting suspicious emails before attackers trick you.
+    </p>
+
+    <div class="email">
+      <h3>🚩 Email Example</h3>
+      <p><strong>From:</strong> security@bankofindia-support.com</p>
+      <p><strong>Subject:</strong> Urgent – Verify Your Account Now!</p>
+      <p>
+        Dear Customer, <br>
+        We noticed unusual activity in your account. Please click 
+        <a href="#">here</a> to verify immediately or your account will be suspended.
+      </p>
+      <button onclick="alert('Correct! This is phishing: fake domain, urgency, suspicious link.')">Mark as Phishing</button>
+      <button onclick="alert('Oops! This was phishing. Always check sender domain & urgency.')">Mark as Safe</button>
+    </div>
+  </div>
+</body>
+</html>

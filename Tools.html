@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Tools Hub</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 36px;
+      font-weight: bold;
+      color: #00e5ff;
+      text-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    /* Back button */
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: transparent;
+      border: 2px solid #00e5ff;
+      border-radius: 8px;
+      color: #00e5ff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: #00e5ff;
+      color: #111;
+      box-shadow: 0 0 15px #00e5ff;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 50px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,229,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: scale(1.07) rotateX(5deg) rotateY(5deg);
+      box-shadow: 0 0 30px rgba(0,229,255,0.6);
+      border-color: #00e5ff;
+    }
+
+    .card h3 {
+      margin-top: 15px;
+      font-size: 24px;
+      color: #00e5ff;
+      text-shadow: 0 0 5px #00e5ff;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #ddd;
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+    .icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #00e5ff;
+      text-shadow: 0 0 15px #00e5ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #aaa;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🛡 Cybersecurity Tools Hub
+    <button class="back-btn" onclick="location.href='index.html'">← Back to Home</button>
+  </header>
+
+  <div class="container">
+    <!-- Phishing Simulator -->
+    <div class="card" onclick="location.href='tools/phishing-simulator.html'">
+      <div class="icon">📧</div>
+      <h3>Phishing Awareness Simulator</h3>
+      <p>
+        This tool helps users train themselves against one of the most common cyber threats – phishing emails.  
+        It presents realistic email templates, where the user must identify suspicious elements like fake links, 
+        urgent requests, or spelling errors.  
+        <br><br>
+        ✅ Learn to recognize red flags in emails  
+        ✅ Understand how attackers trick victims into clicking  
+        ✅ Improve cyber hygiene and avoid becoming a target  
+      </p>
+    </div>
+
+    <!-- Hash Generator -->
+    <div class="card" onclick="location.href='tools/hash-generator.html'">
+      <div class="icon">🔑</div>
+      <h3>Hash Generator</h3>
+      <p>
+        A powerful tool to generate secure cryptographic hashes instantly (MD5, SHA-1, SHA-256).  
+        Hashing is widely used in cybersecurity for storing passwords securely, verifying file integrity, 
+        and ensuring data authenticity.  
+        <br><br>
+        ✅ Generate multiple types of hashes  
+        ✅ Use it for integrity checks when downloading files  
+        ✅ Understand why hashes are irreversible but essential for security  
+      </p>
+    </div>
+
+    <!-- Password Strength Checker -->
+    <div class="card" onclick="location.href='tools/password-checker.html'">
+      <div class="icon">🔒</div>
+      <h3>Password Strength Checker</h3>
+      <p>
+        This tool analyzes the strength of your passwords in real-time. It checks for length, 
+        special characters, numbers, and uppercase letters. It also calculates password entropy 
+        (a measure of unpredictability) and suggests ways to make your password stronger.  
+        <br><br>
+        ✅ Get instant strength feedback (Weak → Strong)  
+        ✅ See entropy score & crack-time estimates  
+        ✅ Learn how to build secure passwords (e.g., passphrases)  
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    ⚡ Cybersecurity Hub – Tools built for learning & awareness. Stay safe, stay secure. ⚡
+  </footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash Generator</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 0; background: #0f2027; color: #fff; }
+    header { padding: 20px; text-align: center; background: #203a43; font-size: 28px; color: #00e5ff; }
+    .back-btn { position: absolute; left: 20px; top: 20px; padding: 8px 15px; border: 2px solid #00e5ff; border-radius: 8px; background: transparent; color: #00e5ff; cursor: pointer; }
+    .container { padding: 30px; max-width: 800px; margin: auto; }
+    textarea { width: 100%; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: none; }
+    button { padding: 10px 20px; margin: 5px; border: none; border-radius: 6px; cursor: pointer; background: #00e5ff; color: #111; font-weight: bold; }
+    .result { margin-top: 20px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    🔑 Hash Generator
+    <button class="back-btn" onclick="location.href='../Tools.html'">← Back</button>
+  </header>
+
+  <div class="container">
+    <h2>About This Tool</h2>
+    <p>
+      Hashing converts input text into a fixed-length value. It's used for password storage, file verification, 
+      and ensuring data integrity. This tool lets you generate <strong>MD5, SHA-1, and SHA-256</strong> hashes instantly.
+    </p>
+
+    <textarea id="inputText" placeholder="Enter text to hash..."></textarea>
+    <br>
+    <button onclick="generateHash('SHA-256')">SHA-256</button>
+    <button onclick="generateHash('SHA-1')">SHA-1</button>
+    <button onclick="generateHash('MD5')">MD5</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    async function generateHash(type) {
+      const text = document.getElementById('inputText').value;
+      if (!text) { alert('Enter some text first'); return; }
+
+      const encoder = new TextEncoder();
+      const data = encoder.encode(text);
+
+      let algo = type;
+      if (type === "MD5") {
+        document.getElementById('result').innerHTML = "<b>MD5 not supported natively in browser JS. Use SHA instead.</b>";
+        return;
+      }
+
+      const hashBuffer = await crypto.subtle.digest(algo, data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      document.getElementById('result').innerHTML = `<b>${type} Hash:</b><br>${hashHex}`;
+    }
+  </script>
+</body>
+</html>
