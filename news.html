@@ -4,133 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cybersecurity News</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       margin: 0;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      padding: 0;
+      background: #0f172a;
+      color: #f1f5f9;
     }
-
     header {
       text-align: center;
-      padding: 40px 20px 20px;
-      background: rgba(0, 0, 0, 0.6);
-      font-size: 36px;
-      font-weight: bold;
-      color: #00e5ff;
+      padding: 20px;
+      background: #1e293b;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
       position: relative;
-      text-shadow: 0 0 10px #00e5ff;
     }
-
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #38bdf8;
+    }
+    /* Back to home button */
     .back-btn {
       position: absolute;
       left: 20px;
       top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 8px 15px;
+      font-size: 14px;
       background: transparent;
-      border: 2px solid #00e5ff;
-      border-radius: 8px;
-      color: #00e5ff;
+      border: 2px solid #38bdf8;
+      border-radius: 6px;
+      color: #38bdf8;
       cursor: pointer;
       transition: all 0.3s ease;
     }
     .back-btn:hover {
-      background: #00e5ff;
-      color: #111;
-      box-shadow: 0 0 15px #00e5ff;
+      background: #38bdf8;
+      color: #0f172a;
+      box-shadow: 0 0 10px #38bdf8;
     }
 
-    .news-container {
+    .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      padding: 50px;
-      max-width: 1400px;
-      margin: auto;
-    }
-
-    .news-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 229, 255, 0.2);
-      border-radius: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
       padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0,229,255,0.1);
     }
-
-    .news-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(0,229,255,0.6);
-      border-color: #00e5ff;
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
-    .news-card h3 {
-      font-size: 22px;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    }
+    .card h3 {
+      font-size: 1.2rem;
       margin-bottom: 10px;
-      color: #00e5ff;
+      color: #facc15;
     }
-
-    .news-card p {
-      font-size: 16px;
-      color: #ddd;
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
-
-    .news-card a {
-      color: #00e5ff;
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #38bdf8;
+      color: #0f172a;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      transition: background 0.2s ease;
     }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #aaa;
-      margin-top: 40px;
-      font-size: 14px;
+    .card a:hover {
+      background: #0ea5e9;
     }
   </style>
 </head>
 <body>
   <header>
-    📰 Cybersecurity News
-    <button class="back-btn" onclick="location.href='index.html'">← Back to Home</button>
+    <button class="back-btn" onclick="location.href='index.html'">← Back</button>
+    <h1>Cybersecurity News</h1>
+    <p>Stay updated with real-time cybersecurity insights</p>
   </header>
 
-  <div class="news-container" id="news-container">
-    <!-- News cards will load here -->
+  <div class="container" id="newsContainer">
+    <p>Loading latest cybersecurity news...</p>
   </div>
 
-  <footer>
-    ⚡ Cybersecurity Hub – Stay updated with the latest in cybersecurity ⚡
-  </footer>
-
   <script>
-    const container = document.getElementById("news-container");
-const apiKey = "5375ce188ffa40e1b0d22c22d90e6052"; // replace with your key
-const url = `https://newsapi.org/v2/everything?q=cybersecurity&sortBy=publishedAt&language=en&apiKey=${apiKey}`;
+    const apiKey = "pub_94754299903e44df8a8880fb0832e9a4";
+    const url = `https://newsdata.io/api/1/latest?apikey=${apiKey}&q=Cybersecurity&language=en`;
 
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    data.articles.forEach(article => {
-      const card = document.createElement("div");
-      card.classList.add("news-card");
-      card.innerHTML = `
-        <h3>${article.title}</h3>
-        <p>${article.description || "No description available."}</p>
-        <a href="${article.url}" target="_blank">Read more</a>
-      `;
-      container.appendChild(card);
-    });
-  })
-  .catch(err => console.error("Failed to load news:", err));
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("newsContainer");
+        container.innerHTML = ""; // Clear loading text
 
+        if (!data.results || data.results.length === 0) {
+          container.innerHTML = "<p>No news found at the moment.</p>";
+          return;
+        }
+
+        data.results.forEach(article => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          card.innerHTML = `
+            <h3>${article.title || "No title"}</h3>
+            <p>${article.description || "No description available."}</p>
+            <a href="${article.link}" target="_blank">Read More</a>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById("newsContainer").innerHTML = `<p>Error fetching news: ${err}</p>`;
+      });
   </script>
 </body>
 </html>
